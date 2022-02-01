@@ -68,42 +68,50 @@ Start Content
     <div class="container">
       <div class="row">
         <div class="col-md-auto">
-          <!-- <div class="keySkillCol"> -->
-          <div class="col-md">
-            <h4 class="smTitle pb-3">Coding Skills</h4>
-            <div class="progressCol">
 
-              <img src="static/images/python.png" height="50" alt="python">  
-              <img src="static/images/django.png" height="60" alt="django">    
-              <img src="static/images/javascript.png" height="60" alt="javascript">     
-              <img src="static/images/node.png" height="60" alt="node">    
-              <img src="static/images/HTML.png" height="60" alt="html">    
-              <img src="static/images/css.png" height="60" alt="css">    
-              <!-- <div class="progressCard">
-                <div class="container">
-                  {% for sk in me.userprofile.skills.all %}
-                    {% if sk.is_key_skill %}
-                    <div class="progressCol">
-                      <span class="progressLbl">{{sk.score}}</span>
-                        <div class="row g-2 align-items-center">
-                          <div class="col">
-                            <div class="progress progressStyle">
-                              <div class="progress-bar" role="progressbar" aria-valuenow="{{sk.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                            <div class="col-auto">
-                              <span class="pLbl">{{sk.score}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                  {% endfor %}
+
+          <div class="keySkillCol">
+            <h4 class="smTitle pb-3">Key Skills</h4>
+            {% for sk in me.userprofile.skills.all %}
+            {% if sk.is_key_skill %}
+              <div class="keySkillCard">
+                {% if sk.image %}
+                <div class="ksIconCol">
+                  <img src="{{sk.image.url}}" alt="...">
                 </div>
-              </div> -->
+                {% endif %}
+                <span class="ksText">{{sk.name}}</span>
+              </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-md">
+          <h4 class="smTitle pb-3">Coding Skills</h4>
+          <div class="progressCol">
+            <div class="progressCard">
+              {% for sk in me.userprofile.skills.all %}
+                {% if not sk.is_key_skill %}
+                  <div class="progressCol">
+                    <span class="progressLbl">{{sk.name}}</span>
+                    <div class="row g-2 align-items-center">
+                      <div class="col">
+                        <div class="progress progressStyle">
+                          <div class="progress-bar" role="progressbar" aria-valuenow="{{sk.score}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <span class="pLbl">{{sk.score}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              
             </div>
           </div>
-          </div>
-        <!-- </div> -->
+        </div>
       </div>
     </div>
   </div>
