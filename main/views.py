@@ -18,7 +18,7 @@ from . forms import ContactForm
 
 
 class IndexView(generic.TemplateView):
-    template_name = "templates/index.html"
+    template_name = "main/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -35,7 +35,7 @@ class IndexView(generic.TemplateView):
 		
 		
 class ContactView(generic.FormView):
-    template_name = "templates/contact.html"
+    template_name = "main/contact.html"
     form_class = ContactForm
     success_url = "/"
 
@@ -47,7 +47,7 @@ class ContactView(generic.FormView):
 
 class PortfolioView(generic.ListView):
 	model = Portfolio
-	template_name = "templates/portfolio.html"
+	template_name = "main/portfolio.html"
 	paginate_by = 10
 
 	def get_queryset(self):
@@ -55,11 +55,11 @@ class PortfolioView(generic.ListView):
 
 class PortfolioDetailView(generic.DetailView):
 	model = Portfolio
-	template_name = "templates/portfolio-detail.html"
+	template_name = "main/portfolio-detail.html"
 
 class BlogView(generic.ListView):
 	model = Blog
-	template_name = "templates/blog.html"
+	template_name = "main/blog.html"
 	paginate_by = 10
 	
 	def get_queryset(self):
@@ -68,4 +68,4 @@ class BlogView(generic.ListView):
 
 class BlogDetailView(generic.DetailView):
 	model = Blog
-	template_name = "templates/blog-detail.html"
+	template_name = "main/blog-detail.html"
