@@ -76,10 +76,14 @@ WSGI_APPLICATION = 'resume_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
     }
 }
+
+DATABASES['default'] = dj_database_url.config(default='postgres://njcqmglfjhyhox:86cc922eca93386ea4ad188959172f1af067a3039c8f3e1be05e121839a983fa@ec2-23-20-73-25.compute-1.amazonaws.com:5432/d9ni8hkv8dplkf')
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
