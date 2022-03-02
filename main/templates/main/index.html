@@ -166,9 +166,13 @@ Start Content
           <div class="col">
             <h4 class="smText regular">Featured Work</h4>
           </div>
-          <div class="col-auto">
+
+          <!-- View All Portfolio work -->
+          <!-- <div class="col-auto">
             <a href="{% url 'main:portfolios' %}" class="simpleLink">View all</a>
-          </div>
+          </div> -->
+
+          
         </div>
         {% for p in portfolio %}
         {% if p.is_active %}
@@ -240,9 +244,13 @@ Start Content
         <div class="col">
           <h4 class="smText regular">Recent posts</h4>
         </div>
-        <div class="col-auto">
+
+        <!-- View All Link -->
+        <!-- <div class="col-auto">
           <a href="{% url 'main:blogs' %}" class="simpleLink">View all</a>
-        </div>
+        </div> -->
+
+
       </div>
       <div class="row g-3">
       {% for b in blogs %}
